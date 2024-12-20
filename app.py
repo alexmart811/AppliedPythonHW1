@@ -45,6 +45,10 @@ if uploaded_file:
             # Асинхронный запрос к API
             response = asyncio.run(fetch_data(f"https://api.openweathermap.org/data/2.5/weather?q={option_city}&appid={API_key}"))
 
+            # Думаю, особой разницы между использованием асинхронного и синхронного
+            # запросов нет, так как нет необходимости выполнять несколько запросов
+            # одновременно. Мы лишь отправляем единственный запрос.
+
             if response['cod'] == 200:
                 curr_temp = float(response['main']['temp']) - 273.15
 
