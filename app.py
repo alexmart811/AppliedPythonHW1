@@ -29,11 +29,14 @@ if uploaded_file:
     end = time.time()
     st.success(f'Время выполнения синхронного запроса составило {end - start:.4f} сек')
 
-    # Асинхронный запрос
+    # Многопоточный запрос
     start = time.time()
     result = asyncio.run(main(df, cities))
     end = time.time()
     st.success(f'Время выполнения многопоточного запроса составило {end - start:.4f} сек')
+
+    # Время выполнения обоих запросов особо не отличается
+    # Думаю, на бОльшем объеме данных результат был бы заметнее
 
     option_city = st.selectbox("Выберите город", cities, index=None, placeholder="Выбор города...")
 
